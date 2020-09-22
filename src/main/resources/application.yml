@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: CAMEL-ADVENTURES-WITH-SCHEDULER
+  output:
+    ansi:
+      enabled: always
+      
+server:
+  port: 8080
+  
+webservice:
+  endpoint:   http4://localhost:8181/getMessage
+
+scheduler:
+  delay: 5s # Delay before first event is triggered
+  period: 5m # every 5 mins
+  repeatCount: 10 # trigger 10 times 
+  endpoint: timer:simpleScheduler?repeatCount=${scheduler.repeatCount}&period=${scheduler.period}&delay=${scheduler.delay}
